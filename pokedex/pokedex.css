@@ -1,0 +1,81 @@
+html,
+body {
+  width:  100%;
+  height: 100%;
+}
+
+body {
+  display:             grid;
+  grid-template:       48px min-content 100vw / 1fr;
+  margin:              0;
+  font-family:         -apple-system, BlinkMacSystemFont, "Segoe UI",
+                       Helvetica, Arial, sans-serif,
+                       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-user-select: none;
+          user-select: none;
+}
+
+input,
+button {
+  font-family: inherit;
+}
+
+.search {
+  display:          flex;
+  padding:          8px;
+  background-color: crimson;
+}
+
+.search-query,
+.search-button {
+  padding:       8px;
+  border-radius: 4px;
+  font-weight:   bold;
+}
+
+.search-query {
+  flex-grow:        1;
+  margin:           0;
+  border:           0;
+  background-color: darkred;
+  color:            white;
+}
+
+.search-button {
+  border:           0;
+  background-color: white;
+}
+
+.search-query::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-button {
+  margin-left: 8px;
+}
+
+.pokemon-sprite {
+  width:           100%;
+  image-rendering: pixelated;
+}
+
+.content {
+  padding: 16px;
+}
+
+@media (min-width: 960px) {
+  body {
+    grid-template:  48px 1fr / 480px 1fr;
+    grid-auto-flow: row;
+  }
+  .search {
+    grid-area: 1 / 1 / 1 / 3;
+  }
+  .pokemon-sprite {
+    grid-area: 2 / 1;
+  }
+  .content {
+    padding:   32px;
+    font-size: 32px;
+  }
+}
