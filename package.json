@@ -1,0 +1,19 @@
+{
+  "name": "electron-pokedex-example",
+  "version": "0.0.0",
+  "description": "A simple Electron Pokédex for teaching purposes using Pokéapi",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LF/electron-pokedex-example.git"
+  },
+  "author": "Neil Manansala <neil@neilmanansala.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LF/electron-pokedex-example/issues"
+  },
+  "homepage": "https://github.com/LF/electron-pokedex-example#readme"
+}
