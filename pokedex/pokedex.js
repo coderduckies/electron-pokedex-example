@@ -1,9 +1,11 @@
-let search             = document.getElementById("search")
-let searchQuery        = document.getElementById("search-query")
-let pokemonName        = document.getElementById("pokemon-name")
-let pokemonDescription = document.getElementById("pokemon-description")
-let pokemonSprite      = document.getElementById("pokemon-sprite")
-let pokemonState       = {
+const https              = require("https")
+
+let   search             = document.getElementById("search")
+let   searchQuery        = document.getElementById("search-query")
+let   pokemonName        = document.getElementById("pokemon-name")
+let   pokemonDescription = document.getElementById("pokemon-description")
+let   pokemonSprite      = document.getElementById("pokemon-sprite")
+let   pokemonState       = {
   name:        null,
   description: null,
   sprite:      null
@@ -44,30 +46,17 @@ function findDescriptionWithLanguage(language) {
   }
 }
 
-function get(url, successCallback, failureCallback=null) {
-  // http://youmightnotneedjquery.com/#request
-  let request = new XMLHttpRequest()
-  request.open("GET", url, true)
-  request.onload = function() {
-    if(200 <= this.status && this.status < 400) {
-      successCallback(this.response)
-    }
-    else {
-      if(failureCallback) {
-        failureCallback(this)
-      }
-    }
-  }
-  request.onerror = function() {
-    if(failureCallback) {
-      failureCallback(this)
-    }
-  }
-  request.send()
+function get(url, callback) {
+  https.get(url, response => {
+    let data = ""
+    response.setEncoding("utf8")
+    response.on("data", chunk => data += chunk)
+    response.on("end",  ()    => callback(data))
+  })
 }
 
-function getJSON(url, successCallback, failureCallback=null) {
-  get(url, response => successCallback(JSON.parse(response)), failureCallback)
+function getJSON(url, callback) {
+  get(url, response => callback(JSON.parse(response)))
 }
 
 function getResource(resource, callback) {
